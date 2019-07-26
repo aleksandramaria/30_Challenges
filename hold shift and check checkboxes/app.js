@@ -7,11 +7,11 @@ let lastChecked;
 function handleCheck(e) {
     let inBetween = false;
     
-    if (e.shiftKey && this.checked) {
+    if (e.shiftKey && e.target.checked) {
         
         checkboxes.forEach(checkbox => {
             
-            if (checkbox === this || checkbox === lastChecked) {
+            if (checkbox === e.target || checkbox === lastChecked) {
                 inBetween = !inBetween;
             }
             
@@ -20,7 +20,8 @@ function handleCheck(e) {
             }
         });
     }
-    lastChecked = this;
+    lastChecked = e.target;
+
 }
 
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
